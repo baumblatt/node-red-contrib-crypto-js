@@ -1,0 +1,38 @@
+<script type="text/javascript">
+	RED.nodes.registerType('digest', {
+		category: 'function',
+		color: '#a6bbcf',
+		defaults: {
+			name: {value: ''}, algorithm: {value: '', required: true}
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: "hash.png",
+		label: function () {
+			return this.name || "digest";
+		}
+	});
+</script>
+
+<script type="text/x-red" data-template-name="digest">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-algorithm"><i class="icon-tag"></i> Algorithm</label>
+        <select type="text" id="node-input-algorithm" style="width:70%;">
+            <option value="MD5">MD5</option>
+            <option value="RIPEMD160">RIPEMD160</option>
+            <option value="SHA3">SHA3</option>
+            <option value="SHA224">SHA224</option>
+            <option value="SHA256">SHA256</option>
+            <option value="SHA384">SHA384</option>
+            <option value="SHA512">SHA512</option>
+        <
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="digest">
+    <p>Create a digest message of payload using the specified algorithm.</p>
+</script>

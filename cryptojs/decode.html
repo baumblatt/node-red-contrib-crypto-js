@@ -1,0 +1,48 @@
+<script type="text/javascript">
+	RED.nodes.registerType('decode', {
+		category: 'function',
+		color: '#a6bbcf',
+		defaults: {
+			name: {value: ''}, encode: {value: '', required: true}
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: "hash.png",
+		label: function () {
+			return this.name || "decode";
+		}
+	});
+</script>
+
+<script type="text/x-red" data-template-name="decode">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-encode"><i class="icon-tag"></i> Encode</label>
+        <select type="text" id="node-input-encode" style="width:70%;">
+            <option value="Base64">Base64</option>
+            <option value="Hex">Hex</option>
+            <option value="Latin1">Latin1</option>
+            <option value="Utf8">Utf8</option>
+            <option value="Utf16">Utf16</option>
+            <option value="Utf16BE">Utf16BE</option>
+            <option value="Utf16LE">Utf16LE</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="decode">
+    <p>Decode the payload using the specified charset generating an wordArray</p>
+    <h3>Input</h3>
+    <dl class="message-properties">
+        <dt>payload</dt>
+        <dd>A string. Object is not supported for awhile.</dd>
+    </dl>
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>payload</dt>
+        <dd>A <b>wordArray</b> that could be used as input of <b>encode</b> nodes.</dd>
+    </dl>
+</script>

@@ -1,0 +1,40 @@
+<script type="text/javascript">
+	RED.nodes.registerType('encrypt', {
+		category: 'function',
+		color: '#a6bbcf',
+		defaults: {
+			name: {value: ''}, algorithm: {value: '', required: true}, key: {value: '', required: true}
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: "hash.png",
+		label: function () {
+			return this.name || "encrypt";
+		}
+	});
+</script>
+
+<script type="text/x-red" data-template-name="encrypt">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-algorithm"><i class="icon-tag"></i> Algorithm</label>
+        <select type="text" id="node-input-algorithm" style="width:70%;">
+            <option value="AES">AES</option>
+            <option value="DES">DES</option>
+            <option value="RC4">RC4</option>
+            <option value="Rabbit">Rabbit</option>
+            <option value="TripleDES">TripleDES</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-key"><i class="icon-tag"></i> Secret Key</label>
+        <input type="text" id="node-input-key" placeholder="Secret Key">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="encrypt">
+    <p>Encrypt the payload using the specified algorithm.</p>
+</script>

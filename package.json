@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-crypto-js",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node-RED nodes using CryptoJS to encrypt and decrypt messages",
   "repository": {
     "type": "git",
@@ -21,7 +21,12 @@
   },
   "node-red": {
     "nodes": {
-      "cryptojs": "cryptojs/cryptojs.js"
+      "encrypt": "cryptojs/encrypt.js",
+      "decrypt": "cryptojs/decrypt.js",
+      "hmac": "cryptojs/hmac.js",
+      "digest": "cryptojs/digest.js",
+      "encode": "cryptojs/encode.js",
+      "decode": "cryptojs/decode.js"
     }
   }
 }
