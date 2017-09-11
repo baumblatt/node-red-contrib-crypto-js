@@ -2,7 +2,7 @@
 Node-RED nodes using CryptoJS to encrypt and decrypt messages
 
 # Sample Flows
-![SampleFlows] (samples/flows.jpg)
+![SampleFlows](samples/flows.jpg)
 
 # CryptoJS 
 > JavaScript library of crypto standards.
