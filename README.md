@@ -7,7 +7,7 @@ npm install node-red-contrib-crypto-js
 # Sample Flows
 ![SampleFlows](samples/flows.jpg)
 
-You can have access to this sample flows on `samples/flows.json` file.
+You can have access to this samples flows on `samples/flows.json` file.
 
 # CryptoJS 
 > JavaScript library of crypto standards.
