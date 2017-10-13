@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-crypto-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node-RED nodes using CryptoJS to encrypt and decrypt messages",
   "repository": {
     "type": "git",
@@ -9,7 +9,9 @@
   "scripts": {
     "test": "node-red"
   },
-  "keywords": [ "node-red" ],
+  "keywords": [
+    "node-red"
+  ],
   "author": "Bernardo Baumblatt",
   "license": "MIT",
   "bugs": {
