@@ -1,8 +1,13 @@
 # node-red-contrib-crypto-js
 Node-RED nodes using CryptoJS to encrypt and decrypt messages
 
+# Install
+npm install node-red-contrib-crypto-js
+
 # Sample Flows
 ![SampleFlows](samples/flows.jpg)
+
+You can have access to this sample flows on `samples/flows.json` file.
 
 # CryptoJS 
 > JavaScript library of crypto standards.
