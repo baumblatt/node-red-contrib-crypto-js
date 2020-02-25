@@ -7,6 +7,13 @@ module.exports = function (RED) {
 		var node = this;
 		node.algorithm = config.algorithm;
 		node.key = config.key;
+		node.mode = config.mode;
+		node.padding = config.padding;
+
+		var CryptoJSConfig = {
+			mode: CryptoJS.mode[node.mode],
+			padding: CryptoJS.pad[node.padding]
+		}
 
 		node.on('input', function (msg) {
 			// check configurations
@@ -19,7 +26,10 @@ module.exports = function (RED) {
 					// debugging message
 					node.debug('Encrypting payload using '+node.algorithm);
 					// encrypt with CryptoJS
-					msg.payload = CryptoJS[node.algorithm].encrypt(msg.payload, node.key).toString();
+					let cipherMessage = CryptoJS.lib.CipherParams.create({ ciphertext: msg.payload });
+					let cipherKey = node.key;
+					msg.payload = CryptoJS[node.algorithm].encrypt(cipherMessage, cipherKey, CryptoJSConfig);
+
 				} else {
 					// debugging message
 					node.trace('Nothing to encrypt: empty payload');
