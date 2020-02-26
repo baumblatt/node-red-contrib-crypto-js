@@ -3,14 +3,23 @@
 		category: 'function',
 		color: '#a6bbcf',
 		defaults: {
-			name: {value: ''}, algorithm: {value: '', required: true}, key: {value: '', required: true}
+			name: {value: ''}, algorithm: {value: '', required: false}, mode: {value: 'CBC', required: false}, padding: {value: 'Pkcs7', required: false}, key: {value: '', required: false}
 		},
 		inputs: 1,
 		outputs: 1,
 		icon: "hash.png",
 		label: function () {
 			return this.name || "encrypt";
-		}
+        },
+        oneditprepare: function (scope) {
+            $('#node-input-algorithm').on('change', function(e) {
+                var value = e.target.value;
+                var isBlockCipher = (value === "AES" || value === "DES" || value === "TripleDES");
+
+                $('.encrypt-mode').toggle(isBlockCipher);
+                $('.encrypt-padding').toggle(isBlockCipher);
+            });
+        }
 	});
 </script>
 
@@ -29,8 +38,8 @@
             <option value="TripleDES">TripleDES</option>
         </select>
     </div>
-    <div class="form-row">
-        <label for="node-input-algorithm"><i class="icon-tag"></i> Mode</label>
+    <div class="form-row encrypt-mode">
+        <label for="node-input-mode"><i class="icon-tag"></i> Mode</label>
         <select type="text" id="node-input-mode" style="width:70%;">
             <option value="CBC">CBC (default)</option>
             <option value="CFB">CFB</option>
@@ -39,8 +48,8 @@
             <option value="ECB">ECB</option>
         </select>
     </div>
-    <div class="form-row">
-        <label for="node-input-algorithm"><i class="icon-tag"></i> Padding</label>
+    <div class="form-row encrypt-mode">
+        <label for="node-input-padding"><i class="icon-tag"></i> Padding</label>
         <select type="text" id="node-input-padding" style="width:70%;">
             <option value="Pkcs7">Pkcs7 (default)</option>
             <option value="Iso97971">Iso97971</option>
@@ -58,4 +67,18 @@
 
 <script type="text/x-red" data-help-name="encrypt">
     <p>Encrypt the payload using the specified algorithm.</p>
+    <p><strong>Input</strong></p>
+    <p>You can set values dynamically by using:<br/>
+        <code>msg.algorithm</code> Algorithm<br/>
+        <code>msg.mode</code> Cipher mode<br/>
+        <code>msg.padding</code> Padding mode<br/>
+        <code>msg.key</code> Secret Key<br/>
+        <code>msg.drop</code> Drop<br/>
+        <code>msg.iv</code> Initialization vector<br/>
+        <code>msg.salt</code> Salt
+    </p>
+    <p><strong>Output</strong></p>
+    <p>
+        <code>msg.payload</code> Enryption output converted to string.
+    </p>
 </script>
